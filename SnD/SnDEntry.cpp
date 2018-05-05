@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "SnDLog.h"
+#include "Graphics.h"
 
 using namespace  log_exceptions;
 #define          WIN32_LEAN_AND_MEAN
@@ -8,6 +9,8 @@ LPCWSTR lpcwsClassName, lpcwstWindowName;
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void             registerWindow(HINSTANCE);
 LPARAM           messageLoop();
+
+snd_graphics::Graphics *graphics;
 
 int WINAPI       WinMain(HINSTANCE hInstance, HINSTANCE pInstance, LPSTR lpCmdLine, int nCmdShow) {
 
@@ -34,6 +37,7 @@ int WINAPI       WinMain(HINSTANCE hInstance, HINSTANCE pInstance, LPSTR lpCmdLi
 		//snd.writeExceptionToFile();
 	}
 
+	graphics = new snd_graphics::Graphics(hdlWindow, 800, 600, 60);
 	return (int) messageLoop();
 }
 
@@ -51,11 +55,16 @@ void registerWindow(HINSTANCE hInstance) {
 
 LPARAM messageLoop() {
 	MSG msg = {};
+
+	graphics->init();
 	while (msg.message != WM_QUIT) {
 		while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
+
+		graphics->clearBackBuffer();
+		graphics->swapBuffers();
 	}
 
 	return 0;
