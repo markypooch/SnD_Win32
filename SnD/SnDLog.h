@@ -4,6 +4,9 @@
 
 namespace log_exceptions
 {
+
+	const int REGISTER_WINDOW_FAILURE = 100;
+	const int CREATE_WINDOW_FAILURE   = 101;
 	class SnDLog : public std::exception
 	{
 		const char*    file;
@@ -24,7 +27,6 @@ namespace log_exceptions
 		const int   get_line()             const { return line; }
 		const char* get_func()             const { return func; }
 		const char* get_info()             const { return info; }
-#
-		void        writeExceptionToFile() const;
+		int         writeExceptionToFile() const;
 	};
 };

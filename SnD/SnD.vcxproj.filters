@@ -13,18 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\log_exceptions">
+      <UniqueIdentifier>{33d950c4-9e15-4cdf-8edb-a0933401acce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\log_exceptions">
+      <UniqueIdentifier>{7b230c77-62a6-4f31-a716-5d87843b62e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnDEntry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SnDLog.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\log_exceptions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SnDLog.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="log_exceptions\SnDLog.h">
+      <Filter>Header Files\log_exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
